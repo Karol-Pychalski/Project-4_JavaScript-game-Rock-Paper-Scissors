@@ -1,36 +1,44 @@
-var computerMove, randomNumber;
+var argMoveId, argPlayerMove, argComputerMove, computerMove, playerMove, randomNumber, playerInput;
+
+/**
+ * Describe this function...
+ */
+function getMoveName(argMoveId) {
+  console.log('function was called getMoveName with argument: ' + argMoveId);
+  if (argMoveId == 1) {
+    return 'kamień';
+  } else if (argMoveId == 2) {
+    return 'papier';
+  } else if (argMoveId == 3) {
+    return 'nożyce';
+  }
+  printMessage(('Nie rozpoznałem ruchu. Spróbuj jeszcze raz.'));
+}
+
+/**
+ * Describe this function...
+ */
+function displayResult(argPlayerMove, argComputerMove) {
+  console.log('wywołano funkcję displayResults z argumentami: ' + argPlayerMove + ', ' + argComputerMove);
+  if (argPlayerMove == 'papier' && argComputerMove == 'kamień') {
+    printMessage('Wygrywasz');
+  } else if (argPlayerMove == 'kamień' && argComputerMove == 'nożyce') {
+    printMessage('Wygrywasz');
+  } else if (argPlayerMove == 'nożyce' && argComputerMove == 'papier') {
+    printMessage('Wygrywasz');
+  } else if (argPlayerMove == argComputerMove) {
+    printMessage('Remis');
+  } else {
+    printMessage('Przegrywasz');
+  }
+  printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
+}
+playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
+console.log('wybór ruchu gracza to: ' + playerInput);
+playerMove = getMoveName(playerInput);
+console.log('ruch gracza to: ' + playerMove);
 randomNumber = Math.floor(Math.random() * 3 + 1);
 console.log('wylosowana liczba to: ' + randomNumber);
-if (randomNumber == '1') {
-  computerMove = 'kamień';
-} else {
-  computerMove = 'nieznany ruch';
-}
-if (randomNumber == '2') {
-  computerMove = 'papier';
-} else {
-  computerMove = 'nieznany ruch';
-}
-if (randomNumber == '3') {
-  computerMove = 'nożyce';
-} else {
-  computerMove = 'nieznany ruch';
-}
-printMessage('Mój ruch: ' + computerMove);
-
-
-
-
-var playerMove, playerInput;
-playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
-console.log('Wpisana odpowiedź to: ' + playerInput);
-if (playerInput == '1') {
-  playerMove = 'kamień';
-} else if (playerInput == '2') {
-  playerMove = 'nożyce';
-} else if (playerInput == '3') {
-  playerMove = 'papier';
-} else {
-  playerMove = 'nieznany ruch';
-}
-printMessage('Twój ruch: ' + playerMove);
+computerMove = getMoveName(randomNumber);
+console.log('ruch komputera to: ' + computerMove);
+displayResult(playerMove, computerMove);
