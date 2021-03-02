@@ -1,3 +1,1 @@
-1. Creating simple game "Paper, rock, scissors" using only HTML and JavaScript.
-
-My notes: based on module 4.
+An example of a simple game "Rock, paper, scissors" created with use of HTML and JavaScript.
