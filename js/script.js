@@ -5,46 +5,46 @@ const buttonScissors = document.getElementById('button-scissors');
 
 function buttonClicked(buttonName) {
   clearMessages();
-  console.log(buttonName + ' został kliknięty');
+  console.log(buttonName + ' button clicked');
 
   function getMoveName(moveId) {
-    console.log('function was called getMoveName with argument: ' + moveId);
+    console.log('function getMoveName was called with argument: ' + moveId);
     if (moveId == 1) {
-      return 'kamień';
+      return 'rock';
     } else if (moveId == 2) {
-      return 'papier';
+      return 'paper';
     } else if (moveId == 3) {
-      return 'nożyce';
+      return 'scissors';
     }
-    printMessage(('Nie rozpoznałem ruchu. Spróbuj jeszcze raz.'));
+    printMessage(('I did not recognize the move. Please try again.'));
   }
   
   function displayResult(playerMove, computerMove) {
-    console.log('wywołano funkcję displayResults z argumentami: ' + playerMove + ', ' + computerMove);
-    if (playerMove == 'papier' && computerMove == 'kamień') {
-      printMessage('Wygrywasz');
-    } else if (playerMove == 'kamień' && computerMove == 'nożyce') {
-      printMessage('Wygrywasz');
-    } else if (playerMove == 'nożyce' && computerMove == 'papier') {
-      printMessage('Wygrywasz');
+    console.log('function displayResults was called with arguments: ' + playerMove + ', ' + computerMove);
+    if (playerMove == 'paper' && computerMove == 'rock') {
+      printMessage('You win!');
+    } else if (playerMove == 'rock' && computerMove == 'scissors') {
+      printMessage('You win!');
+    } else if (playerMove == 'scissors' && computerMove == 'paper') {
+      printMessage('You win!');
     } else if (playerMove == computerMove) {
-      printMessage('Remis');
+      printMessage('Draw!');
     } else {
-      printMessage('Przegrywasz');
+      printMessage('You lose...');
     }
-    printMessage('Zagrałem ' + computerMove + ', a Ty ' + playerMove);
+    printMessage('I played ' + computerMove + ', and you ' + playerMove);
   }
   
   const playerMove = buttonName;
-  console.log('ruch gracza to: ' + playerMove);
+  console.log('palyer move is: ' + playerMove);
   const randomNumber = Math.floor(Math.random() * 3 + 1);
-  console.log('wylosowana liczba to: ' + randomNumber);
+  console.log('drawn number : ' + randomNumber);
     
   const computerMove = getMoveName(randomNumber);
-  console.log('ruch komputera to: ' + computerMove);
+  console.log('computer move is: ' + computerMove);
   displayResult(playerMove, computerMove);
 }
 
-buttonRock.addEventListener('click', function(){ buttonClicked('kamień'); });
-buttonPaper.addEventListener('click', function(){ buttonClicked('papier'); });
-buttonScissors.addEventListener('click', function(){ buttonClicked('nożyce'); });
+buttonRock.addEventListener('click', function(){ buttonClicked('rock'); });
+buttonPaper.addEventListener('click', function(){ buttonClicked('paper'); });
+buttonScissors.addEventListener('click', function(){ buttonClicked('scissors'); });
